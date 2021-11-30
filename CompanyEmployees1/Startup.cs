@@ -30,7 +30,6 @@ namespace CompanyEmployees1
             "/nlog.config"));
             Configuration = configuration;
         }
-
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
@@ -44,7 +43,14 @@ namespace CompanyEmployees1
 
             services.ConfigureRepositoryManager();
 
-            services.AddControllers();
+            services.AddControllers(config =>
+            {
+                config.RespectBrowserAcceptHeader = true;
+                config.ReturnHttpNotAcceptable = true;
+            }).AddNewtonsoftJson()
+                .AddXmlDataContractSerializerFormatters();
+               // .AddCustomCSVFormatter();
+
 
             services.AddSwaggerGen(c =>
             {
