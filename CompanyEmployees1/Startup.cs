@@ -49,7 +49,12 @@ namespace CompanyEmployees1
                 config.ReturnHttpNotAcceptable = true;
             }).AddNewtonsoftJson()
                 .AddXmlDataContractSerializerFormatters();
-               // .AddCustomCSVFormatter();
+            //.AddCustomCSVFormatter();
+
+            services.Configure<ApiBehaviorOptions>(options =>
+            {
+                options.SuppressModelStateInvalidFilter = true;
+            });
 
 
             services.AddSwaggerGen(c =>
