@@ -1,4 +1,5 @@
 using AutoMapper;
+using CompanyEmployees1.ActionFilters;
 using CompanyEmployees1.Extentions;
 using Contracts;
 using Entities.DataTransferObjects;
@@ -50,6 +51,10 @@ namespace CompanyEmployees1
             }).AddNewtonsoftJson()
                 .AddXmlDataContractSerializerFormatters();
             //.AddCustomCSVFormatter();
+
+            services.AddScoped<ValidationFilterAttribute>();
+            services.AddScoped<ValidateCompanyExistsAttribute>();
+            services.AddScoped<ValidateEmployeeForCompanyExistsAttribute>();    
 
             services.Configure<ApiBehaviorOptions>(options =>
             {
