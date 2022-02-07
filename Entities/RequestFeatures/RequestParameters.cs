@@ -29,7 +29,10 @@ namespace Entities.RequestFeatures
     {
         public uint MinAge { set; get; }
         public uint MaxAge { set; get; } = int.MaxValue;
+
         public bool ValidAgeRange => MaxAge > MinAge;
+
+        public string SearchTerm { get; set; }
     }
 
 }
