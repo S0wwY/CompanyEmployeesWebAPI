@@ -23,10 +23,16 @@ namespace Entities.RequestFeatures
             }
         }
 
+        public string OrderBy { get; set; }
+
     }
 
     public class EmployeeParameters : RequestParameters
     {
+        public EmployeeParameters()
+        {
+            OrderBy = "name";
+        }
         public uint MinAge { set; get; }
         public uint MaxAge { set; get; } = int.MaxValue;
 
