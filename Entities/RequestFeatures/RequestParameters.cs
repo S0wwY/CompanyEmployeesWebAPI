@@ -27,7 +27,9 @@ namespace Entities.RequestFeatures
 
     public class EmployeeParameters : RequestParameters
     {
-
+        public uint MinAge { set; get; }
+        public uint MaxAge { set; get; } = int.MaxValue;
+        public bool ValidAgeRange => MaxAge > MinAge;
     }
 
 }
