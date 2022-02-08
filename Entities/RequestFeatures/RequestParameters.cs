@@ -25,6 +25,8 @@ namespace Entities.RequestFeatures
 
         public string OrderBy { get; set; }
 
+        public string Fields { get; set; }
+
     }
 
     public class EmployeeParameters : RequestParameters
@@ -33,8 +35,8 @@ namespace Entities.RequestFeatures
         {
             OrderBy = "name";
         }
-        public uint MinAge { set; get; }
-        public uint MaxAge { set; get; } = int.MaxValue;
+        public uint MinAge { get; set; }
+        public uint MaxAge { get; set; } = int.MaxValue;
 
         public bool ValidAgeRange => MaxAge > MinAge;
 
