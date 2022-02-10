@@ -37,6 +37,7 @@ namespace CompanyEmployees1.ModelBinders
             objectArray.CopyTo(guidArray, 0);
             bindingContext.Model = guidArray;
             bindingContext.Result = ModelBindingResult.Success(bindingContext.Model);
+
             return Task.CompletedTask;
         }
     }

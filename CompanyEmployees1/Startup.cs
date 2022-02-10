@@ -59,6 +59,11 @@ namespace CompanyEmployees1
 
             services.AddScoped<IDataShaper<EmployeeDto>, DataShaper<EmployeeDto>>();
 
+            services.AddAuthentication();
+            services.ConfigureIdentity();
+
+            services.ConfigureVersioning();
+
 
             services.Configure<ApiBehaviorOptions>(options =>
             {
@@ -95,6 +100,7 @@ namespace CompanyEmployees1
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

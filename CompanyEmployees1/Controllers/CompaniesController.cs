@@ -28,6 +28,14 @@ namespace CompanyEmployees1.Controllers
             _mapper = mapper;
         }
 
+        [HttpOptions]
+        public IActionResult GetCompaniesOptions()
+        {
+            Response.Headers.Add("Allow", "GET, OPTIONS, POST");
+
+            return Ok();
+        }
+
         [HttpGet]
         public async Task<IActionResult> GetCompanies()
         {
