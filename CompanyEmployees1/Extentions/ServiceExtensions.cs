@@ -12,11 +12,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
 
 namespace CompanyEmployees1.Extentions
 {
     public static class ServiceExtensions
     {
+        public static object JwtBearerDefaults { get; private set; }
+
         public static void ConfigureCors(this IServiceCollection services) =>
         services.AddCors(options =>
         {
@@ -62,5 +66,28 @@ namespace CompanyEmployees1.Extentions
             builder = new IdentityBuilder(builder.UserType, typeof(IdentityRole), builder.Services);
             builder.AddEntityFrameworkStores<RepositoryContext>().AddDefaultTokenProviders();
         }
+
+        //public static void ConfigureJWT(this IServiceCollection services, IConfiguration configuration)
+        //{
+        //    var jwtSettings = configuration.GetSection("JwtSettings");
+        //    var secretKey = Environment.GetEnvironmentVariable("SECRET");
+        //    services.AddAuthentication(opt => {
+        //        opt.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+        //        opt.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+        //    })
+        //    .AddJwtBearer(options =>
+        //    {
+        //        options.TokenValidationParameters = new TokenValidationParameters
+        //        {
+        //            ValidateIssuer = true,
+        //            ValidateAudience = true,
+        //            ValidateLifetime = true,
+        //            ValidateIssuerSigningKey = true,
+        //            ValidIssuer = jwtSettings.GetSection("validIssuer").Value,
+        //            ValidAudience = jwtSettings.GetSection("validAudience").Value,
+        //            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secretKey))
+        //        };
+        //    });
+        //}
     }
 }

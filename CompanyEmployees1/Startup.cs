@@ -15,6 +15,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using NLog;
+using Repository;
 using Repository.DataShaping;
 using System;
 using System.Collections.Generic;
@@ -64,6 +65,7 @@ namespace CompanyEmployees1
 
             services.ConfigureVersioning();
 
+            services.AddScoped<IAuthenticationManager, AuthenticationManager>();
 
             services.Configure<ApiBehaviorOptions>(options =>
             {
